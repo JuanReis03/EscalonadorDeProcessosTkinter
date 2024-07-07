@@ -1,7 +1,7 @@
-from tkinter import *
+#from tkinter import *
 
 class Processo:
-    def __init__(self, pid: int, tempo_chegada: int, tempo_execucao: int, deadline: int) -> None:
+    def __init__(self, pid, tempo_chegada: int, tempo_execucao: int, deadline: int) -> None:
         self.__pid__ = pid
         self.chegada = tempo_chegada
         self.exec = tempo_execucao

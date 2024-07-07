@@ -1,13 +1,45 @@
-# Lista original de listas
-lista_original = [[1, 2], [3, 4], [5, 6]]
+class Pessoa(object):
+    def __init__(self, nome, idade, salario):
+        self._nome = nome
+        self._idade = idade
+        self._salario = salario
 
-# Shallow copy da lista de listas
-shallow_copy = lista_original[:]
+    @property
+    def nome(self):
+        print('get do nome')
+        return self._nome
 
-# Iteração e remoção na shallow copy
-for sublist in shallow_copy[:]:  # Usando [:] para criar uma cópia e iterar sobre ela
-    if sublist[0] == 3:  # Exemplo de condição de remoção
-        shallow_copy.remove(sublist)
+    @nome.setter
+    def nome(self, nome):
+        print('set do nome', nome)
+        self._nome = nome
 
-print("Lista Original:", lista_original)  # Saída: [[1, 2], [3, 4], [5, 6]]
-print("Shallow Copy após Remoção:", shallow_copy)  # Saída: [[1, 2], [5, 6]]
+    @property
+    def idade(self):
+        print('get da idade')
+        return self._idade
+
+    @idade.setter
+    def idade(self, idade):
+        print('set da idade', idade)
+        self._idade = idade
+
+    @property
+    def salario(self):
+        print('get do salario')
+        return self._salario
+
+    @salario.setter
+    def salario(self, salario):
+        print('set do salario', salario)
+        self._salario = salario
+
+
+pessoa = Pessoa('Miguel', 30, 50)
+print(pessoa.__dict__) # valores iniciais
+pessoa.nome = 'Afonso'
+pessoa.idade = 20
+pessoa.salario = 500
+print(pessoa.nome)
+print(pessoa.idade)
+print(pessoa.salario)
