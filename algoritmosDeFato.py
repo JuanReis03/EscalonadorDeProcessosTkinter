@@ -22,8 +22,6 @@ def fifo(lista_de_processos):
                 
             print()
             
-    print('Tempo total de execucao: ',timer+1)
-
 
 def sjf(lista_de_processos):
     lista_de_processos_para_execucao = deepcopy(lista_de_processos)
@@ -56,7 +54,7 @@ def sjf(lista_de_processos):
             (lista_de_processos_disponiveis[0]).exec -= 1 
         timer += 1  
 
-    print('Tempo total de execucao: ', timer+1)    
+
 
 
 def roundRobin(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
@@ -95,9 +93,9 @@ def roundRobin(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
             (lista_de_processos_disponiveis[0]).exec -= 1 
         timer += 1 
         tempo_de_execucao_do_primeiro_processo += 1
+    print('Total de tempo de sobrecarga: ',total_de_tempo_de_sobrecarga)
+    print('Tempo total: ', timer+1)
 
-    print('Total de tempo de sobrecarga: ', total_de_tempo_de_sobrecarga)
-    print('Tempo total de execucao: ', timer+1)
 
 
 def edf(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
@@ -150,21 +148,21 @@ def edf(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
         tempo_de_execucao_do_primeiro_processo += 1
 
     print('Total de tempo de sobrecarga: ',total_de_tempo_de_sobrecarga)
-    print('Tempo total de execucao: ', timer+1)
+    print('Tempo total: ', timer+1)
 
+if __name__ == "__main__" :
+    p1, p2, p3, p4 = Processo('A', 0, 4, 7), Processo('B', 2, 2, 5), Processo('C', 4, 1, 8), Processo('D', 6, 3 ,10)
+    lista_de_processos = [p1, p2, p3, p4]
+    quantum = 2 
+    sobrecarga = 1 
 
-p1, p2, p3, p4 = Processo('A', 0, 4, 7), Processo('B', 2, 2, 5), Processo('C', 4, 1, 8), Processo('D', 6, 3 ,10)
-lista_de_processos = [p1, p2, p3, p4]
-quantum = 2 
-sobrecarga = 1 
-
-fifo(lista_de_processos)
-print("", "")
-sjf(lista_de_processos)
-print("", "")
-roundRobin(lista_de_processos, quantum, sobrecarga)
-print("", "")
-edf(lista_de_processos, quantum, sobrecarga)
+    fifo(lista_de_processos)
+    print("", "")
+    sjf(lista_de_processos)
+    print("", "")
+    roundRobin(lista_de_processos, quantum, sobrecarga)
+    print("", "")
+    edf(lista_de_processos, quantum, sobrecarga)
 
 
 
