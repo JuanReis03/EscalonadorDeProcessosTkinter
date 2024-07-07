@@ -13,7 +13,7 @@ class Processo:
     def get_chegada(self) -> int:
         return self.chegada
     
-    def get_exec(self) -> int:
+    def get_tempo_execucao(self) -> int:
         return self.exec
     
     def set_tempo_execucao(self, tempo_execucao: int) -> None:
@@ -27,4 +27,17 @@ class Processo:
     def set_deadline(self, deadline: int) -> None:
         self.deadline = deadline
         return None
+
+
+
+if __name__ == "__main__" :
     
+    p = Processo(0, 4, 5, 7)
+
+    print(f"PID:{p.get_pid()}\nTempo de Chegada:{p.get_chegada()}\nTempo de Execução:{p.get_tempo_execucao()}\nDeadline:{p.get_deadline()}")
+
+    p.set_tempo_execucao(6)
+    p.set_deadline(5)
+
+    print(f"PID:{p.get_pid()}\nTempo de Chegada:{p.get_chegada()}\nTempo de Execução:{p.get_tempo_execucao()}\nDeadline:{p.get_deadline()}")
+
