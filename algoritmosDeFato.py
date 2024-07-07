@@ -19,7 +19,7 @@ def fifo(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
             return
         else:
             for processo in lista_de_processos_disponiveis:
-                print(processo.get_pid() + str(processo.get_exec()), end=' ')
+                print(processo.get_pid() + str(processo.get_tempo_execucao()), end=' ')
                 
             print()
 
@@ -38,16 +38,16 @@ def sjf(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
                 lista_de_processos_para_execucao.remove(processo)
 
         for processo in lista_de_processos_disponiveis:
-            print(processo.get_pid() + str(processo.get_exec()), end=' ')
+            print(processo.get_pid() + str(processo.get_tempo_execucao()), end=' ')
         print()
 
         primeiro_elemento = lista_de_processos_disponiveis[0]
-        resto_ordenado = sorted(lista_de_processos_disponiveis[1:], key=lambda proces: proces.get_exec())
+        resto_ordenado = sorted(lista_de_processos_disponiveis[1:], key=lambda proces: proces.get_tempo_execucao())
         lista_de_processos_disponiveis = [primeiro_elemento] + resto_ordenado
         
         
         
-        if (lista_de_processos_disponiveis[0]).get_exec() <= 0:          
+        if (lista_de_processos_disponiveis[0]).get_tempo_execucao() <= 0:          
             lista_de_processos_ja_executados.append(lista_de_processos_disponiveis[0])
             lista_de_processos_disponiveis.pop(0)
 
@@ -71,11 +71,11 @@ def roundRobin(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
                     lista_de_processos_para_execucao.remove(processo)
 
         for processo in lista_de_processos_disponiveis:
-            print(processo.get_pid() + str(processo.get_exec()), end=' ')
+            print(processo.get_pid() + str(processo.get_tempo_execucao()), end=' ')
         print()
 
 
-        if (lista_de_processos_disponiveis[0]).get_exec() <= 0:          
+        if (lista_de_processos_disponiveis[0]).get_tempo_execucao() <= 0:          
                 lista_de_processos_ja_executados.append(lista_de_processos_disponiveis[0])
                 lista_de_processos_disponiveis.pop(0)
                 tempo_de_execucao_do_primeiro_processo = 0
@@ -114,11 +114,11 @@ def edf(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
 
 
         for processo in lista_de_processos_disponiveis:
-            print(processo.get_pid() + str(processo.get_exec()), end=' ')
+            print(processo.get_pid() + str(processo.get_tempo_execucao()), end=' ')
         print()
 
 
-        if (lista_de_processos_disponiveis[0]).get_exec() <= 0:          
+        if (lista_de_processos_disponiveis[0]).get_tempo_execucao() <= 0:          
                 lista_de_processos_ja_executados.append(lista_de_processos_disponiveis[0])
                 lista_de_processos_disponiveis.pop(0)
                 tempo_de_execucao_do_primeiro_processo = 0
