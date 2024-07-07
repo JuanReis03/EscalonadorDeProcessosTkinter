@@ -2,16 +2,15 @@
 from copy import deepcopy
 from Processo import * 
 
-p1, p2, p3, p4 = Processo('A', 0, 4, 7), Processo('B', 2, 2, 5), Processo('C', 4, 1, 8), Processo('D', 6, 3 ,10)
-lista_de_processos = [p1, p2, p3, p4]
-quantum = 2 
-sobrecarga = 1 
 
-def fifo(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
+
+def fifo(lista_de_processos):
     lista_de_processos_para_execucao = deepcopy(lista_de_processos)
     lista_de_processos_disponiveis = sorted(lista_de_processos_para_execucao, key=lambda proces: proces.get_chegada())
+    timer = 0 
 
     while len(lista_de_processos_disponiveis) != 0:
+        timer += 1
         (lista_de_processos_disponiveis[0]).exec -= 1
         if (lista_de_processos_disponiveis[0]).exec <= 0:
             lista_de_processos_disponiveis.pop(0)
@@ -22,9 +21,11 @@ def fifo(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
                 print(processo.get_pid() + str(processo.get_tempo_execucao()), end=' ')
                 
             print()
+            
+    print('Tempo total de execucao: ',timer+1)
 
 
-def sjf(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
+def sjf(lista_de_processos):
     lista_de_processos_para_execucao = deepcopy(lista_de_processos)
     timer = 0 
     lista_de_processos_disponiveis = []
@@ -53,7 +54,9 @@ def sjf(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
 
         if lista_de_processos_disponiveis:
             (lista_de_processos_disponiveis[0]).exec -= 1 
-        timer += 1      
+        timer += 1  
+
+    print('Tempo total de execucao: ', timer+1)    
 
 
 def roundRobin(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
@@ -93,8 +96,8 @@ def roundRobin(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
         timer += 1 
         tempo_de_execucao_do_primeiro_processo += 1
 
-    print(total_de_tempo_de_sobrecarga)
-
+    print('Total de tempo de sobrecarga: ', total_de_tempo_de_sobrecarga)
+    print('Tempo total de execucao: ', timer+1)
 
 
 def edf(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
@@ -146,12 +149,18 @@ def edf(lista_de_processos, quantum_do_sistema, sobrecarga_do_sistema):
         timer += 1 
         tempo_de_execucao_do_primeiro_processo += 1
 
-    print(total_de_tempo_de_sobrecarga)
+    print('Total de tempo de sobrecarga: ',total_de_tempo_de_sobrecarga)
+    print('Tempo total de execucao: ', timer+1)
 
 
-fifo(lista_de_processos, quantum, sobrecarga)
+p1, p2, p3, p4 = Processo('A', 0, 4, 7), Processo('B', 2, 2, 5), Processo('C', 4, 1, 8), Processo('D', 6, 3 ,10)
+lista_de_processos = [p1, p2, p3, p4]
+quantum = 2 
+sobrecarga = 1 
+
+fifo(lista_de_processos)
 print("", "")
-sjf(lista_de_processos, quantum, sobrecarga)
+sjf(lista_de_processos)
 print("", "")
 roundRobin(lista_de_processos, quantum, sobrecarga)
 print("", "")
