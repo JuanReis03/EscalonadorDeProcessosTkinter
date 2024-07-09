@@ -4,14 +4,14 @@ from algoritmosDeFato import *
 
 class Processo:
     def __init__(self, pid, tempo_chegada: int, tempo_execucao: int, deadline: int) -> None:
-        self.__pid__ = pid
+        self.pid = pid
         self.chegada = tempo_chegada
         self.exec = tempo_execucao
         self.deadline = deadline
 
     
     def get_pid(self) -> str:
-        return str(self.__pid__)
+        return str(self.pid)
     
     def get_chegada(self) -> int:
         return self.chegada
