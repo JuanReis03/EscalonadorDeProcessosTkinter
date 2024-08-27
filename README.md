@@ -1,2 +1,2 @@
 # EscalonadorDeProcessosTkinter
-Projeto final da MATA58 Sistemas Operacionais
+Escalonador de Algoritmos para sistemas operacionais.
